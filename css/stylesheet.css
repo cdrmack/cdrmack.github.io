@@ -1,0 +1,26 @@
+@media all
+{
+    body {
+	color: black;
+	margin-top: 0;
+	line-height: 1.4rem;
+    }
+
+    body #content {
+	padding-top: 2em;
+	margin: auto;
+	max-width: 48em;
+	background-color: white;
+    }
+
+    pre {
+	font-family: Droid Sans Mono, Monaco, Consolas, "Lucida Console", monospace;
+	color: black;
+	font-size: 90%;
+	padding: 0.5em;
+	overflow: auto;
+	border: none;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+    }
+}
