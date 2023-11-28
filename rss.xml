@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Mon, 13 Nov 2023 11:12:19 +0100</pubDate>
-  <lastBuildDate>Mon, 13 Nov 2023 11:12:19 +0100</lastBuildDate>
+  <pubDate>Tue, 28 Nov 2023 18:03:39 +0100</pubDate>
+  <lastBuildDate>Tue, 28 Nov 2023 18:03:39 +0100</lastBuildDate>
   <generator>Emacs 29.1 Org-mode 9.6.6</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -25,6 +25,18 @@
   </image>
 
 
+  <item>
+    <title>WireGuard on FreeBSD</title>
+    <link>https://cdrmack.dev/posts/2023-11-28_wireguard_on_freebsd.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2023-11-28_wireguard_on_freebsd.html</guid>
+    <pubDate>Tue, 28 Nov 2023 00:00:00 +0100</pubDate>
+
+    <description><![CDATA[<p>
+    Item description is not yet implemented. :P
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>Emacs Server</title>
     <link>https://cdrmack.dev/posts/2023-11-04_emacs_server.html</link>

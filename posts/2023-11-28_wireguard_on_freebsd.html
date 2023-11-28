@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-11-28 Tue 18:03 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WireGuard on FreeBSD</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":wireguard:vpn:freebsd:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+
+<div id="outline-container-orga7a3547" class="outline-2">
+<h2 id="orga7a3547">Wireguard on FreeBSD</h2>
+<div class="outline-text-2" id="text-orga7a3547">
+<p>
+After upgrading my system to FreeBSD 14.0 I have decided to try WireGuard.
+I have never used it before and even after reading <code>wg(8)</code> I didn't really know how to make it work.
+After reading few articles I have found about <code>wg-quick(8)</code> that made the whole setup a bit simpler.
+</p>
+</div>
+
+<div id="outline-container-org3cb8717" class="outline-3">
+<h3 id="org3cb8717">Step-by-Step</h3>
+<div class="outline-text-3" id="text-org3cb8717">
+<p>
+WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
+The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pkg install wireguard-tools
+</pre>
+</div>
+
+<p>
+You need to get a WireGuard INI-like config file from your provider.
+See the example below from the <code>wg(8)</code> man pages.
+</p>
+
+<pre class="example" id="org4e13419">
+[Interface]
+PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
+ListenPort = 51820
+
+[Peer]
+PublicKey = xTIBA5rboUvnH4htodjb6e697QjLERt1NAB4mZqp8Dg=
+Endpoint = 192.95.5.67:1234
+AllowedIPs = 10.192.122.3/32, 10.192.124.1/24
+</pre>
+
+<p>
+Next we need to generate public and private key for our machine.
+I have created <code>/etc/wireguard/</code> directory and run the following as a root user:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">umask 077
+wg genkey | tee private.key | wg pubkey &gt; public.key
+</pre>
+</div>
+
+<p>
+WireGuard protects these files by enforcing that only root should be able read them.
+This is why we run <code>umask</code> first.
+</p>
+
+<p>
+You can move your config file to <code>/etc/wireguard/</code>.
+This is the default directory that <code>wg-quick</code> uses to find config files.
+</p>
+
+<p>
+You can start WireGuard by providing path to the config file:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">wg-quick up /etc/wireguard/sample.conf
+</pre>
+</div>
+
+<p>
+or provide just the config name if it's inside <code>/etc/wireguard/</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">wg-quick up sample
+</pre>
+</div>
+
+<p>
+You can disable it with <code>wg-quick down sample</code> and see running connections with <code>wg</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
