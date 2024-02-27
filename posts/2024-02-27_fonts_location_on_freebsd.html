@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-02-27 Tue 19:19 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fonts Location on FreeBSD</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":freebsd:fonts:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+
+<div id="outline-container-orgad7ec5a" class="outline-2">
+<h2 id="orgad7ec5a">Fonts Location on FreeBSD</h2>
+<div class="outline-text-2" id="text-orgad7ec5a">
+<p>
+I have always stored my fonts inside the <code>~/.fonts</code> directory.
+</p>
+
+<p>
+I have decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
+</p>
+
+<p>
+This is what I have found inside:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&lt;!-- Font directory list --&gt;
+
+        &lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;
+
+        &lt;dir prefix="xdg"&gt;fonts&lt;/dir&gt;
+        &lt;!-- the following element will be removed in the future --&gt;
+        &lt;dir&gt;~/.fonts&lt;/dir&gt;
+</pre>
+</div>
+
+<p>
+Based on the comment "the following element will be removed in the future" I think it's safe to assume that <code>~/.fonts</code> might stop working at some point.
+</p>
+
+<p>
+Remember to run <code>fc-cache(1)</code> to scan the font directories and build cache files.
+I usually run it with <code>-f</code> flag to force re-generation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
