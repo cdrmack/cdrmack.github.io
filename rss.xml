@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Tue, 27 Feb 2024 19:19:48 +0100</pubDate>
-  <lastBuildDate>Tue, 27 Feb 2024 19:19:48 +0100</lastBuildDate>
+  <pubDate>Sun, 24 Mar 2024 22:21:48 +0100</pubDate>
+  <lastBuildDate>Sun, 24 Mar 2024 22:21:48 +0100</lastBuildDate>
   <generator>Emacs 29.1 Org-mode 9.6.6</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -26,6 +26,36 @@
 
 
   <item>
+    <title>Road to Space</title>
+    <link>https://cdrmack.dev/posts/2024-03-24_road_to_space.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-03-24_road_to_space.html</guid>
+    <pubDate>Sun, 24 Mar 2024 00:00:00 +0100</pubDate>
+
+    <description><![CDATA[<p>
+    It's been 10 years since I started my first job as a software engineer. During these years, I have worked in a few different industries, and the older I get, the more often I ask myself - what's even the point? I do not see any bigger purpose in my life and my work. I feel I'm not changing anything and have almost no impact on people's lives and the world around me. I started playing around with computers at a young age, and I knew very quickly that I wanted my career to be close to computers. My whole education was aimed towards it. I was passionate about learning and experimenting with things for years. I do not really know when I lost myself. I think I got sucked into chasing things I do not really care about, money being just an example. Money is nice, money is actually necessary to some degree, but at some level, you just don't need more, but you still want them - why?
+    </p>
+
+    <p>
+    I think the following quote from "The Hitchhiker’s Guide to the Galaxy" by Douglas Adams is pretty accurate in that regard.
+    </p>
+
+    <blockquote>
+    <p>
+    "This planet has—or rather had—a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn’t the small green pieces of paper that were unhappy."
+    </p>
+    </blockquote>
+
+    <p>
+    I have decided that I need to make a big change and reevaluate my life and the situation I am in. Who do I want to be? What makes me happy? What do I enjoy doing? Is my ego controlling me? What is the motivation for my activities? I like learning. I actually kept learning different things for years during my free time. I have some experience in academia and research. I studied and worked abroad. I like working in an international environment, would love to learn more languages, and keep learning things that can actually be used to make the world a bit better.
+    </p>
+
+    <p>
+    I know there are many industries that can satisfy all these requirements, but I have decided to do my best to enter the Space Industry. I do not yet know how many things I'm missing to be valuable there, but I'm more excited than I have been in years when I even think about this. I have made my decision already; now I need to do the work to get there. Wish me luck!
+    </p>
+    ]]></description>
+  </item>
+  <item>
     <title>Fonts Location on FreeBSD</title>
     <link>https://cdrmack.dev/posts/2024-02-27_fonts_location_on_freebsd.html</link>
     <author> (cdrmack)</author>
@@ -33,7 +63,34 @@
     <pubDate>Tue, 27 Feb 2024 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    Item description is not yet implemented. :P
+    I have always stored my fonts inside the <code>~/.fonts</code> directory.
+    </p>
+
+    <p>
+    I have decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
+    </p>
+
+    <p>
+    This is what I have found inside:
+    </p>
+    <div class="org-src-container">
+    <pre class="src src-shell">&lt;!-- Font directory list --&gt;
+
+    &lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;
+
+    &lt;dir prefix="xdg"&gt;fonts&lt;/dir&gt;
+    &lt;!-- the following element will be removed in the future --&gt;
+    &lt;dir&gt;~/.fonts&lt;/dir&gt;
+    </pre>
+    </div>
+
+    <p>
+    Based on the comment "the following element will be removed in the future" I think it's safe to assume that <code>~/.fonts</code> might stop working at some point.
+    </p>
+
+    <p>
+    Remember to run <code>fc-cache(1)</code> to scan the font directories and build cache files.
+    I usually run it with <code>-f</code> flag to force re-generation.
     </p>
     ]]></description>
   </item>
@@ -45,8 +102,83 @@
     <pubDate>Tue, 28 Nov 2023 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    Item description is not yet implemented. :P
+    After upgrading my system to FreeBSD 14.0 I have decided to try WireGuard.
+    I have never used it before and even after reading <code>wg(8)</code> I didn't really know how to make it work.
+    After reading few articles I have found about <code>wg-quick(8)</code> that made the whole setup a bit simpler.
     </p>
+
+    <div id="outline-container-org860e705" class="outline-3">
+    <h3 id="org860e705"><span class="section-number-3">3.1.</span> Step-by-Step</h3>
+    <div class="outline-text-3" id="text-3-1">
+    <p>
+    WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
+    The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg install wireguard-tools
+    </pre>
+    </div>
+
+    <p>
+    You need to get a WireGuard INI-like config file from your provider.
+    See the example below from the <code>wg(8)</code> man pages.
+    </p>
+
+    <pre class="example" id="org62b1eac">
+    [Interface]
+    PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
+    ListenPort = 51820
+
+    [Peer]
+    PublicKey = xTIBA5rboUvnH4htodjb6e697QjLERt1NAB4mZqp8Dg=
+    Endpoint = 192.95.5.67:1234
+    AllowedIPs = 10.192.122.3/32, 10.192.124.1/24
+    </pre>
+
+    <p>
+    Next we need to generate public and private key for our machine.
+    I have created <code>/etc/wireguard/</code> directory and run the following as a root user:
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">umask 077
+    wg genkey | tee private.key | wg pubkey &gt; public.key
+    </pre>
+    </div>
+
+    <p>
+    WireGuard protects these files by enforcing that only root should be able read them.
+    This is why we run <code>umask</code> first.
+    </p>
+
+    <p>
+    You can move your config file to <code>/etc/wireguard/</code>.
+    This is the default directory that <code>wg-quick</code> uses to find config files.
+    </p>
+
+    <p>
+    You can start WireGuard by providing path to the config file:
+    </p>
+    <div class="org-src-container">
+    <pre class="src src-shell">wg-quick up /etc/wireguard/sample.conf
+    </pre>
+    </div>
+
+    <p>
+    or provide just the config name if it's inside <code>/etc/wireguard/</code>.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">wg-quick up sample
+    </pre>
+    </div>
+
+    <p>
+    You can disable it with <code>wg-quick down sample</code> and see running connections with <code>wg</code>.
+    </p>
+    </div>
+    </div>
     ]]></description>
   </item>
   <item>
@@ -57,7 +189,42 @@
     <pubDate>Sat, 04 Nov 2023 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    Item description is not yet implemented. :P
+    People often claim that Emacs is slower compared to other editors, particularly when using multiple external packages.
+    Personally, I start Emacs in "server-mode" alongside my graphical environment, allowing me to quickly connect to that server later on.
+    </p>
+
+    <p>
+    It can be easily done by editing <code>~/.xinitrc</code> file (this file is being used by <code>xinit(1)</code> to start the X Window System server and a first client program).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell"># .xinitrc
+    # ...
+    emacs --daemon
+    # ...
+    </pre>
+    </div>
+
+    <p>
+    According to <code>emacs(1)</code> the <code>emacs --daemon</code> command starts Emacs as daemon (o rly?), enables Emacs server and disconnects from the terminal.
+    </p>
+
+    <p>
+    With server running in the background, we can connect to it with the <code>emacsclient(1)</code> command:
+    </p>
+    <div class="org-src-container">
+    <pre class="src src-shell">emacsclient -c -a ""
+    </pre>
+    </div>
+
+    <p>
+    To create a new frame, the flag <code>-c</code> is used. This is particularly useful when Emacs is already open but you don't want to reuse the existing frame.
+    The second flag, <code>-a</code>, initiates an alternate editor if the Emacs server is not running. If it's left empty, as in this case, it runs <code>emacs --daemon</code> and attempts to connect to it.
+    </p>
+
+    <p>
+    To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (in my case, it is <code>/usr/local/bin/</code>).
+    Now, I can launch the Emacs client just like any other program.
     </p>
     ]]></description>
   </item>
