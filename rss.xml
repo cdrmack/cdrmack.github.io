@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sun, 24 Mar 2024 22:21:48 +0100</pubDate>
-  <lastBuildDate>Sun, 24 Mar 2024 22:21:48 +0100</lastBuildDate>
+  <pubDate>Thu, 04 Apr 2024 17:21:14 +0200</pubDate>
+  <lastBuildDate>Thu, 04 Apr 2024 17:21:14 +0200</lastBuildDate>
   <generator>Emacs 29.1 Org-mode 9.6.6</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -25,6 +25,41 @@
   </image>
 
 
+  <item>
+    <title>Amfora - Gemini Client</title>
+    <link>https://cdrmack.dev/posts/2024-04-04_amfora_gemini_client.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-04-04_amfora_gemini_client.html</guid>
+    <pubDate>Thu, 04 Apr 2024 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    If you want to play around with the Gemini Protocol on FreeBSD you use can program called <code>amfora</code> to view Gemini Capsules. It's a terminal browser easily available via <code>pkg(8)</code>.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg install amfora
+    </pre>
+    </div>
+
+    <p>
+    When you run <code>amfora</code> you can press <code>?</code> to see list of shortcuts.
+    </p>
+
+    <p>
+    My most used shortcuts:
+    <code>1-0</code> go to links 0-10
+    <code>SPC</code> enter address or link ID
+    <code>b</code> go back in history
+    <code>f</code> go forward in history
+    <code>C-b</code> open bookmarks
+    <code>C-d</code> add, change or remove bookmark
+    </p>
+
+    <p>
+    If you want to go to link "11" press <code>SPC</code>, enter link ID (11) and press enter.
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>Road to Space</title>
     <link>https://cdrmack.dev/posts/2024-03-24_road_to_space.html</link>
@@ -108,8 +143,8 @@
     </p>
 
     <div id="outline-container-org860e705" class="outline-3">
-    <h3 id="org860e705"><span class="section-number-3">3.1.</span> Step-by-Step</h3>
-    <div class="outline-text-3" id="text-3-1">
+    <h3 id="org860e705"><span class="section-number-3">4.1.</span> Step-by-Step</h3>
+    <div class="outline-text-3" id="text-4-1">
     <p>
     WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
     The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
@@ -125,7 +160,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org62b1eac">
+    <pre class="example" id="orgee0a603">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
