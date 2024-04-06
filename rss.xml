@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Thu, 04 Apr 2024 17:21:14 +0200</pubDate>
-  <lastBuildDate>Thu, 04 Apr 2024 17:21:14 +0200</lastBuildDate>
+  <pubDate>Sat, 06 Apr 2024 14:30:04 +0200</pubDate>
+  <lastBuildDate>Sat, 06 Apr 2024 14:30:04 +0200</lastBuildDate>
   <generator>Emacs 29.1 Org-mode 9.6.6</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -25,6 +25,50 @@
   </image>
 
 
+  <item>
+    <title>ECSS</title>
+    <link>https://cdrmack.dev/posts/2024-04-06_ecss.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-04-06_ecss.html</guid>
+    <pubDate>Sat, 06 Apr 2024 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    I'm currently trying to enter the space industry and gather as much information as possible about the required skills needed to be useful in that sector.
+    </p>
+
+    <p>
+    I was able to contact an ESA employee and ask some questions about the industry as a whole and opportunities for software engineers with different backgrounds. I also explored multiple career sites from companies that work in the space sector and reviewed the required and desirable skills for software-related roles.
+    </p>
+
+    <p>
+    From what I found, Java is mostly used for Space Ground Systems, and C and C++ are used for onboard software. I also saw Python, Ada, Fortran and C# for some positions.
+    </p>
+
+    <p>
+    As one might expect, there are also expectations regarding scripting languages, databases, operating systems, version control systems, etc. Requirements differ depending on seniority and project type, but during this research, I also kept encountering "ECSS" repeatedly.
+    </p>
+
+    <p>
+    After some digging, I found that ECSS stands for the European Cooperation for Space Standardization. According to the official website, this is "an initiative established to develop a coherent, single set of user-friendly standards for use in all European space activities."
+    </p>
+
+    <p>
+    There are MANY standards there, but the good news is that I probably do not need to know them all and that I can access them for free.
+    </p>
+
+    <p>
+    Right now, I plan to get familiar with the following:
+    E-10 (system engineering)
+    E-40 (software engineering)
+    Q-80 (software product assurance)
+    </p>
+
+    <p>
+    There are slides and recorded training sessions available on the official website. I might need to watch them all at some point.
+    <a href="https://ecss.nl/ecss-training/training-material/ecss-training-material-downloads/">ECSS training material</a>
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>Amfora - Gemini Client</title>
     <link>https://cdrmack.dev/posts/2024-04-04_amfora_gemini_client.html</link>
@@ -143,8 +187,8 @@
     </p>
 
     <div id="outline-container-org860e705" class="outline-3">
-    <h3 id="org860e705"><span class="section-number-3">4.1.</span> Step-by-Step</h3>
-    <div class="outline-text-3" id="text-4-1">
+    <h3 id="org860e705"><span class="section-number-3">5.1.</span> Step-by-Step</h3>
+    <div class="outline-text-3" id="text-5-1">
     <p>
     WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
     The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
@@ -160,7 +204,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="orgee0a603">
+    <pre class="example" id="orgf0741e0">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
