@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sat, 06 Apr 2024 14:30:04 +0200</pubDate>
-  <lastBuildDate>Sat, 06 Apr 2024 14:30:04 +0200</lastBuildDate>
+  <pubDate>Sun, 07 Apr 2024 09:19:01 +0200</pubDate>
+  <lastBuildDate>Sun, 07 Apr 2024 09:19:01 +0200</lastBuildDate>
   <generator>Emacs 29.1 Org-mode 9.6.6</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -37,7 +37,7 @@
     </p>
 
     <p>
-    I was able to contact an ESA employee and ask some questions about the industry as a whole and opportunities for software engineers with different backgrounds. I also explored multiple career sites from companies that work in the space sector and reviewed the required and desirable skills for software-related roles.
+    I was able to contact an ESA (European Space Agency) employee and ask some questions about the industry as a whole and opportunities for software engineers with different backgrounds. I also explored multiple career sites from companies that work in the space sector and reviewed the required and desirable skills for software-related roles.
     </p>
 
     <p>
@@ -65,6 +65,9 @@
 
     <p>
     There are slides and recorded training sessions available on the official website. I might need to watch them all at some point.
+    </p>
+
+    <p>
     <a href="https://ecss.nl/ecss-training/training-material/ecss-training-material-downloads/">ECSS training material</a>
     </p>
     ]]></description>
@@ -204,7 +207,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="orgf0741e0">
+    <pre class="example" id="orgce364fb">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
