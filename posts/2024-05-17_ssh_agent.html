@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-05-17 Fri 14:17 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ssh agent</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":ssh-agent:ssh:freebsd:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+
+<div id="outline-container-orgb1cce82" class="outline-2">
+<h2 id="orgb1cce82">ssh agent</h2>
+<div class="outline-text-2" id="text-orgb1cce82">
+<p>
+First we need to start <code>ssh-agent(1)</code>. We use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and <code>-s</code> for Bourne-shell.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">eval `ssh-agent -c`
+</pre>
+</div>
+
+<p>
+With ssh-agent running we need to <code>ssh-add(1)</code> our private key that we want to use.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ssh-add ~/.ssh/&lt;your_private_key&gt;
+</pre>
+</div>
+
+<p>
+That's it, <code>ssh-agent</code> will now hold that private key and use it for public key authentication.
+You can list all identities currently represented by the agent with the <code>ssh-agent -l</code> command.
+</p>
+
+<p>
+To set this up automatically on login, just add these commands to your shell configuration file.
+As an example, for <code>tcsh(1)</code> use <code>~/.tcshrc</code>.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -14,9 +14,9 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sun, 07 Apr 2024 09:19:01 +0200</pubDate>
-  <lastBuildDate>Sun, 07 Apr 2024 09:19:01 +0200</lastBuildDate>
-  <generator>Emacs 29.1 Org-mode 9.6.6</generator>
+  <pubDate>Fri, 17 May 2024 14:17:49 +0200</pubDate>
+  <lastBuildDate>Fri, 17 May 2024 14:17:49 +0200</lastBuildDate>
+  <generator>Emacs 29.3 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
@@ -25,6 +25,42 @@
   </image>
 
 
+  <item>
+    <title>ssh agent</title>
+    <link>https://cdrmack.dev/posts/2024-05-17_ssh_agent.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-05-17_ssh_agent.html</guid>
+    <pubDate>Fri, 17 May 2024 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    First we need to start <code>ssh-agent(1)</code>. We use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and <code>-s</code> for Bourne-shell.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">eval `ssh-agent -c`
+    </pre>
+    </div>
+
+    <p>
+    With ssh-agent running we need to <code>ssh-add(1)</code> our private key that we want to use.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">ssh-add ~/.ssh/&lt;your_private_key&gt;
+    </pre>
+    </div>
+
+    <p>
+    That's it, <code>ssh-agent</code> will now hold that private key and use it for public key authentication.
+    You can list all identities currently represented by the agent with the <code>ssh-agent -l</code> command.
+    </p>
+
+    <p>
+    To set this up automatically on login, just add these commands to your shell configuration file.
+    As an example, for <code>tcsh(1)</code> use <code>~/.tcshrc</code>.
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>ECSS</title>
     <link>https://cdrmack.dev/posts/2024-04-06_ecss.html</link>
@@ -138,10 +174,10 @@
     ]]></description>
   </item>
   <item>
-    <title>Fonts Location on FreeBSD</title>
-    <link>https://cdrmack.dev/posts/2024-02-27_fonts_location_on_freebsd.html</link>
+    <title>Fonts Location</title>
+    <link>https://cdrmack.dev/posts/2024-02-27_fonts_location.html</link>
     <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-02-27_fonts_location_on_freebsd.html</guid>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-02-27_fonts_location.html</guid>
     <pubDate>Tue, 27 Feb 2024 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
@@ -177,10 +213,10 @@
     ]]></description>
   </item>
   <item>
-    <title>WireGuard on FreeBSD</title>
-    <link>https://cdrmack.dev/posts/2023-11-28_wireguard_on_freebsd.html</link>
+    <title>WireGuard</title>
+    <link>https://cdrmack.dev/posts/2023-11-28_wireguard.html</link>
     <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2023-11-28_wireguard_on_freebsd.html</guid>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2023-11-28_wireguard.html</guid>
     <pubDate>Tue, 28 Nov 2023 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
@@ -189,9 +225,6 @@
     After reading few articles I have found about <code>wg-quick(8)</code> that made the whole setup a bit simpler.
     </p>
 
-    <div id="outline-container-org860e705" class="outline-3">
-    <h3 id="org860e705"><span class="section-number-3">5.1.</span> Step-by-Step</h3>
-    <div class="outline-text-3" id="text-5-1">
     <p>
     WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
     The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
@@ -207,7 +240,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="orgce364fb">
+    <pre class="example" id="org58ef124">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
@@ -259,8 +292,6 @@
     <p>
     You can disable it with <code>wg-quick down sample</code> and see running connections with <code>wg</code>.
     </p>
-    </div>
-    </div>
     ]]></description>
   </item>
   <item>
