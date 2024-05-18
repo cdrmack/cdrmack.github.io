@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Fri, 17 May 2024 14:17:49 +0200</pubDate>
-  <lastBuildDate>Fri, 17 May 2024 14:17:49 +0200</lastBuildDate>
+  <pubDate>Sat, 18 May 2024 22:26:42 +0200</pubDate>
+  <lastBuildDate>Sat, 18 May 2024 22:26:42 +0200</lastBuildDate>
   <generator>Emacs 29.3 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -33,7 +33,7 @@
     <pubDate>Fri, 17 May 2024 00:00:00 +0200</pubDate>
 
     <description><![CDATA[<p>
-    First we need to start <code>ssh-agent(1)</code>. We use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and <code>-s</code> for Bourne-shell.
+    To use <code>ssh(1)</code> we first need to start <code>ssh-agent(1)</code>. We use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and <code>-s</code> for Bourne-shell.
     </p>
 
     <div class="org-src-container">
@@ -240,7 +240,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org58ef124">
+    <pre class="example" id="orgd45be8a">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
