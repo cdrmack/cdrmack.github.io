@@ -14,9 +14,9 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sat, 18 May 2024 22:26:42 +0200</pubDate>
-  <lastBuildDate>Sat, 18 May 2024 22:26:42 +0200</lastBuildDate>
-  <generator>Emacs 29.3 Org-mode 9.6.15</generator>
+  <pubDate>Wed, 09 Oct 2024 20:32:18 +0200</pubDate>
+  <lastBuildDate>Wed, 09 Oct 2024 20:32:18 +0200</lastBuildDate>
+  <generator>Emacs 29.4 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
@@ -62,57 +62,10 @@
     ]]></description>
   </item>
   <item>
-    <title>ECSS</title>
-    <link>https://cdrmack.dev/posts/2024-04-06_ecss.html</link>
+    <title>Amfora</title>
+    <link>https://cdrmack.dev/posts/2024-04-04_amfora.html</link>
     <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-04-06_ecss.html</guid>
-    <pubDate>Sat, 06 Apr 2024 00:00:00 +0200</pubDate>
-
-    <description><![CDATA[<p>
-    I'm currently trying to enter the space industry and gather as much information as possible about the required skills needed to be useful in that sector.
-    </p>
-
-    <p>
-    I was able to contact an ESA (European Space Agency) employee and ask some questions about the industry as a whole and opportunities for software engineers with different backgrounds. I also explored multiple career sites from companies that work in the space sector and reviewed the required and desirable skills for software-related roles.
-    </p>
-
-    <p>
-    From what I found, Java is mostly used for Space Ground Systems, and C and C++ are used for onboard software. I also saw Python, Ada, Fortran and C# for some positions.
-    </p>
-
-    <p>
-    As one might expect, there are also expectations regarding scripting languages, databases, operating systems, version control systems, etc. Requirements differ depending on seniority and project type, but during this research, I also kept encountering "ECSS" repeatedly.
-    </p>
-
-    <p>
-    After some digging, I found that ECSS stands for the European Cooperation for Space Standardization. According to the official website, this is "an initiative established to develop a coherent, single set of user-friendly standards for use in all European space activities."
-    </p>
-
-    <p>
-    There are MANY standards there, but the good news is that I probably do not need to know them all and that I can access them for free.
-    </p>
-
-    <p>
-    Right now, I plan to get familiar with the following:
-    E-10 (system engineering)
-    E-40 (software engineering)
-    Q-80 (software product assurance)
-    </p>
-
-    <p>
-    There are slides and recorded training sessions available on the official website. I might need to watch them all at some point.
-    </p>
-
-    <p>
-    <a href="https://ecss.nl/ecss-training/training-material/ecss-training-material-downloads/">ECSS training material</a>
-    </p>
-    ]]></description>
-  </item>
-  <item>
-    <title>Amfora - Gemini Client</title>
-    <link>https://cdrmack.dev/posts/2024-04-04_amfora_gemini_client.html</link>
-    <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-04-04_amfora_gemini_client.html</guid>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-04-04_amfora.html</guid>
     <pubDate>Thu, 04 Apr 2024 00:00:00 +0200</pubDate>
 
     <description><![CDATA[<p>
@@ -140,36 +93,6 @@
 
     <p>
     If you want to go to link "11" press <code>SPC</code>, enter link ID (11) and press enter.
-    </p>
-    ]]></description>
-  </item>
-  <item>
-    <title>Road to Space</title>
-    <link>https://cdrmack.dev/posts/2024-03-24_road_to_space.html</link>
-    <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-03-24_road_to_space.html</guid>
-    <pubDate>Sun, 24 Mar 2024 00:00:00 +0100</pubDate>
-
-    <description><![CDATA[<p>
-    It's been 10 years since I started my first job as a software engineer. During these years, I have worked in a few different industries, and the older I get, the more often I ask myself - what's even the point? I do not see any bigger purpose in my life and my work. I feel I'm not changing anything and have almost no impact on people's lives and the world around me. I started playing around with computers at a young age, and I knew very quickly that I wanted my career to be close to computers. My whole education was aimed towards it. I was passionate about learning and experimenting with things for years. I do not really know when I lost myself. I think I got sucked into chasing things I do not really care about, money being just an example. Money is nice, money is actually necessary to some degree, but at some level, you just don't need more, but you still want them - why?
-    </p>
-
-    <p>
-    I think the following quote from "The Hitchhiker’s Guide to the Galaxy" by Douglas Adams is pretty accurate in that regard.
-    </p>
-
-    <blockquote>
-    <p>
-    "This planet has—or rather had—a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn’t the small green pieces of paper that were unhappy."
-    </p>
-    </blockquote>
-
-    <p>
-    I have decided that I need to make a big change and reevaluate my life and the situation I am in. Who do I want to be? What makes me happy? What do I enjoy doing? Is my ego controlling me? What is the motivation for my activities? I like learning. I actually kept learning different things for years during my free time. I have some experience in academia and research. I studied and worked abroad. I like working in an international environment, would love to learn more languages, and keep learning things that can actually be used to make the world a bit better.
-    </p>
-
-    <p>
-    I know there are many industries that can satisfy all these requirements, but I have decided to do my best to enter the Space Industry. I do not yet know how many things I'm missing to be valuable there, but I'm more excited than I have been in years when I even think about this. I have made my decision already; now I need to do the work to get there. Wish me luck!
     </p>
     ]]></description>
   </item>
@@ -240,7 +163,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="orgd45be8a">
+    <pre class="example" id="org3ab055c">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
