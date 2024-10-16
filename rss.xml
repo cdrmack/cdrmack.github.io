@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Wed, 09 Oct 2024 20:32:18 +0200</pubDate>
-  <lastBuildDate>Wed, 09 Oct 2024 20:32:18 +0200</lastBuildDate>
+  <pubDate>Wed, 16 Oct 2024 14:19:09 +0200</pubDate>
+  <lastBuildDate>Wed, 16 Oct 2024 14:19:09 +0200</lastBuildDate>
   <generator>Emacs 29.4 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -25,6 +25,33 @@
   </image>
 
 
+  <item>
+    <title>crontab for individual users</title>
+    <link>https://cdrmack.dev/posts/2024-10-16_crontab_for_individual_users.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-16_crontab_for_individual_users.html</guid>
+    <pubDate>Wed, 16 Oct 2024 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    I used to use root's <code>crontab(1)</code> even for things specific to my regular user.
+    I didn't know that each user can have their own.
+    </p>
+
+    <p>
+    Comparing to the root's <code>/etc/crontab</code> we do not need to specify as "who" the command should be run.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">crontab -e
+    </pre>
+    </div>
+
+    <pre class="example" id="orgcb9a7f8">
+    #minute	hour	mday	month	wday	command
+    0	*	*	*	*	echo "do stuff every hour"
+    </pre>
+    ]]></description>
+  </item>
   <item>
     <title>ssh agent</title>
     <link>https://cdrmack.dev/posts/2024-05-17_ssh_agent.html</link>
@@ -163,7 +190,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org3ab055c">
+    <pre class="example" id="org3055cd1">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
