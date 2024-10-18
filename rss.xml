@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Wed, 16 Oct 2024 14:19:09 +0200</pubDate>
-  <lastBuildDate>Wed, 16 Oct 2024 14:19:09 +0200</lastBuildDate>
+  <pubDate>Fri, 18 Oct 2024 09:46:14 +0200</pubDate>
+  <lastBuildDate>Fri, 18 Oct 2024 09:46:14 +0200</lastBuildDate>
   <generator>Emacs 29.4 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -25,6 +25,113 @@
   </image>
 
 
+  <item>
+    <title>ssh to VM</title>
+    <link>https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
+    <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    Make sure <code>sshd(8)</code> is running on the guest.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">service sshd status
+    </pre>
+    </div>
+
+    <p>
+    If it's not you might need to add that daemon to the <code>rc.conf(5)</code>.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">sysrc sshd_enable="YES"
+    </pre>
+    </div>
+
+    <p>
+    It should run automatically after reboot but for now you probably have to start it manually.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">service sshd start
+    </pre>
+    </div>
+
+    <p>
+    With sshd enabled on guest make sure you try to connect to the correct system (VM) from the host.
+    </p>
+
+    <p>
+    Run the following command on the guest to display fingerprint of its public key file.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub
+    </pre>
+    </div>
+
+    <p>
+    Try to ssh to the guest from host and compare fingerprints.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">ssh &lt;guest_IP&gt;
+    </pre>
+    </div>
+
+    <hr />
+
+    <p>
+    Transfer host's public key to the guest with <code>scp(1)</code>.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">scp ~/.ssh/&lt;host_public_key&gt;.pub &lt;guest_user&gt;@&lt;guest_IP&gt;:
+    </pre>
+    </div>
+
+    <p>
+    Authorize host's public key on guest.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">cat &lt;host_public_key&gt;.pub &gt;&gt; ~/.ssh/authorized_keys
+    </pre>
+    </div>
+
+    <p>
+    It should be now possible to ssh to guest without credentials.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">ssh &lt;guest_user&gt;@&lt;guest_IP&gt;
+    </pre>
+    </div>
+
+    <p>
+    Consider adding entry to the <code>~/.ssh/config</code> to make it even easier.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-example">Host &lt;name&gt;
+    User &lt;guest_user&gt;
+    HostName &lt;guest_IP&gt;
+    IdentityFile ~/.ssh/&lt;host_private_key&gt;
+    </pre>
+    </div>
+
+    <p>
+    Now it's even better.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">ssh &lt;name&gt;
+    </pre>
+    </div>
+    ]]></description>
+  </item>
   <item>
     <title>crontab for individual users</title>
     <link>https://cdrmack.dev/posts/2024-10-16_crontab_for_individual_users.html</link>
@@ -46,7 +153,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="orgcb9a7f8">
+    <pre class="example" id="org883db1b">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -190,7 +297,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org3055cd1">
+    <pre class="example" id="org1b6fa91">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
