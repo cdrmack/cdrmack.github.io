@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Fri, 18 Oct 2024 09:46:14 +0200</pubDate>
-  <lastBuildDate>Fri, 18 Oct 2024 09:46:14 +0200</lastBuildDate>
+  <pubDate>Wed, 26 Feb 2025 16:08:46 +0100</pubDate>
+  <lastBuildDate>Wed, 26 Feb 2025 16:08:46 +0100</lastBuildDate>
   <generator>Emacs 29.4 Org-mode 9.6.15</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -26,13 +26,119 @@
 
 
   <item>
+    <title>Debian VM on FreeBSD</title>
+    <link>https://cdrmack.dev/posts/2025-02-26_debian_vm_on_freebsd.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-02-26_debian_vm_on_freebsd.html</guid>
+    <pubDate>Wed, 26 Feb 2025 00:00:00 +0100</pubDate>
+
+    <description><![CDATA[<p>
+    #+end<sub>src</sub>
+    </p>
+
+    <p>
+    You need dataset for virtual machines (if ZFS is being used).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">zfs create zroot/bhyve
+    </pre>
+    </div>
+
+    <p>
+    Update system configuration (<code>rc.conf(5)</code>).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">sysrc vm_enable="YES"
+    sysrc vm_dir="zfs:zroot/bhyve"
+    </pre>
+    </div>
+
+    <p>
+    Run <code>vm init</code> to finish initialisation. This will create subdirectories inside the dataset.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm init
+    </pre>
+    </div>
+
+    <p>
+    To enable network for the VMs create virtual switch and attach network interface to it.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm switch create public
+    vm switch add public re0
+    </pre>
+    </div>
+
+    <p>
+    Now you are ready to create Debian's VM. You can use sample config for this to make it easier.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">cp /usr/local/share/examples/vm-bhyve/debian.conf /zroot/bhyve/.templates/
+    </pre>
+    </div>
+
+    <p>
+    In my case I want to use debian template (<code>-t</code>) and specify disk image size (<code>-s</code>) to be 40G.
+    The following command will create directory with config, disk image and log. This is a good moment to edit VM's config file and set things like RAM.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm create -t debian -s 40G debian_vm
+    </pre>
+    </div>
+
+    <p>
+    VM is now created but nothing is yet installed on it. Installation image is needed, it can be downloaded with <code>vm iso</code> (it will be placed inside <code>/zroot/bhyve/.iso/</code>).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm iso https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-12.9.0-amd64-DVD-1.iso
+    </pre>
+    </div>
+
+    <p>
+    Install Debian on the VM.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm install -f debian_vm debian-12.9.0-amd64-DVD-1.iso
+    </pre>
+    </div>
+
+    <p>
+    After the installation VM is ready to be used.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">vm start debian_vm
+    vm console debian_vm
+    </pre>
+    </div>
+
+    <p>
+    <code>vm(8)</code> uses <code>cu(1)</code>, to exit console back to the host use <code>~^D or ~.~</code>.
+    </p>
+    ]]></description>
+  </item>
+  <item>
     <title>ssh to VM</title>
     <link>https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</link>
     <author> (cdrmack)</author>
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<p>
+    <description><![CDATA[<pre class="example" id="orgb958c96">
+    Host: FreeBSD
+    Guest (VM): NetBSD
+    </pre>
+
+    <p>
     Make sure <code>sshd(8)</code> is running on the guest.
     </p>
 
@@ -153,7 +259,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org883db1b">
+    <pre class="example" id="org60e32b3">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -297,7 +403,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org1b6fa91">
+    <pre class="example" id="org464041d">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
