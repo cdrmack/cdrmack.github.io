@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Fri, 30 May 2025 21:29:05 +0200</pubDate>
-  <lastBuildDate>Fri, 30 May 2025 21:29:05 +0200</lastBuildDate>
+  <pubDate>Fri, 30 May 2025 23:49:05 +0200</pubDate>
+  <lastBuildDate>Fri, 30 May 2025 23:49:05 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -137,7 +137,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgea8a730">
+    <description><![CDATA[<pre class="example" id="org1a29bf8">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -263,7 +263,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org647fae2">
+    <pre class="example" id="orga31e4bf">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -341,23 +341,24 @@
     ]]></description>
   </item>
   <item>
-    <title>Fonts Location</title>
+    <title>fonts location</title>
     <link>https://cdrmack.dev/posts/2024-02-27_fonts_location.html</link>
     <author> (cdrmack)</author>
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-02-27_fonts_location.html</guid>
     <pubDate>Tue, 27 Feb 2024 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    I have always stored my fonts inside the <code>~/.fonts</code> directory.
+    I've always stored my fonts inside the <code>~/.fonts</code> directory.
     </p>
 
     <p>
-    I have decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
+    I've decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
     </p>
 
     <p>
-    This is what I have found inside:
+    This is what I've found inside.
     </p>
+
     <div class="org-src-container">
     <pre class="src src-shell">&lt;!-- Font directory list --&gt;
 
@@ -407,7 +408,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org15d7c95">
+    <pre class="example" id="orgeb9af43">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
