@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-10-16 Wed 13:05 -->
+<!-- 2025-05-30 Fri 21:29 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Server</title>
+<title>emacs server</title>
 <meta name="author" content="cdrmack" />
 <meta name="keywords" content=":emacs:server:client:" />
 <meta name="generator" content="Org Mode" />
@@ -13,17 +13,18 @@
 </head>
 <body>
 <div id="content" class="content">
-
-<div id="outline-container-orgcf3c1c7" class="outline-2">
-<h2 id="orgcf3c1c7">Emacs Server</h2>
-<div class="outline-text-2" id="text-orgcf3c1c7">
+<div id="outline-container-org5b5ee7d" class="outline-2">
+<h2 id="org5b5ee7d">emacs server</h2>
+<div class="outline-text-2" id="text-org5b5ee7d">
 <p>
-People often claim that Emacs is slower compared to other editors, particularly when using multiple external packages.
-Personally, I start Emacs in "server-mode" alongside my graphical environment, allowing me to quickly connect to that server later on.
+I start Emacs in "server-mode" alongside my graphical environment.
+Whenever I want to use it, everything is already loaded and ready to go.
+Thanks to that, from my perspective it opens pretty much instantly.
 </p>
 
 <p>
-It can be easily done by editing <code>~/.xinitrc</code> file (this file is being used by <code>xinit(1)</code> to start the X Window System server and a first client program).
+It can be easily set by editing <code>~/.xinitrc</code> file.
+This file is being used by <code>xinit(1)</code> to start the X Window System server and a first client program.
 </p>
 
 <div class="org-src-container">
@@ -39,21 +40,24 @@ According to <code>emacs(1)</code> the <code>emacs --daemon</code> command start
 </p>
 
 <p>
-With server running in the background, we can connect to it with the <code>emacsclient(1)</code> command:
+With server running in the background, I can connect to it with the <code>emacsclient(1)</code> command.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-shell">emacsclient -c -a ""
 </pre>
 </div>
 
 <p>
-To create a new frame, the flag <code>-c</code> is used. This is particularly useful when Emacs is already open but you don't want to reuse the existing frame.
-The second flag, <code>-a</code>, initiates an alternate editor if the Emacs server is not running. If it's left empty, as in this case, it runs <code>emacs --daemon</code> and attempts to connect to it.
+To create a new frame, the flag <code>-c</code> is used.
+This is particularly useful when Emacs is already open but I don't want to reuse the existing frame.
+The second flag, <code>-a</code>, initiates an alternate editor if the Emacs server is not running.
+If it is left empty, as in this case, it runs <code>emacs --daemon</code> and attempts to connect to it.
 </p>
 
 <p>
-To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (in my case, it is <code>/usr/local/bin/</code>).
-Now, I can launch the Emacs client just like any other program.
+To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (<code>/usr/local/bin/</code>, to be specific).
+Now, I can launch Emacs client just like any other program.
 </p>
 </div>
 </div>

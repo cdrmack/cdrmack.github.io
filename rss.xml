@@ -14,16 +14,15 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Wed, 26 Feb 2025 16:08:46 +0100</pubDate>
-  <lastBuildDate>Wed, 26 Feb 2025 16:08:46 +0100</lastBuildDate>
-  <generator>Emacs 29.4 Org-mode 9.6.15</generator>
+  <pubDate>Fri, 30 May 2025 21:29:05 +0200</pubDate>
+  <lastBuildDate>Fri, 30 May 2025 21:29:05 +0200</lastBuildDate>
+  <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>~cdrmack RSS</title>
     <link>https://cdrmack.dev</link>
   </image>
-
 
   <item>
     <title>Debian VM on FreeBSD</title>
@@ -33,8 +32,13 @@
     <pubDate>Wed, 26 Feb 2025 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    #+end<sub>src</sub>
+    <code>bhyve(8)</code> is a hypervisor available on FreeBSD. I personally use <code>vm-bhyve(8)</code> to manage my virtual machines because I find it a bit easier.
     </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg install vm-bhyve
+    </pre>
+    </div>
 
     <p>
     You need dataset for virtual machines (if ZFS is being used).
@@ -133,7 +137,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgb958c96">
+    <description><![CDATA[<pre class="example" id="orgea8a730">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -259,7 +263,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org60e32b3">
+    <pre class="example" id="org647fae2">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -403,7 +407,7 @@
     See the example below from the <code>wg(8)</code> man pages.
     </p>
 
-    <pre class="example" id="org464041d">
+    <pre class="example" id="org15d7c95">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
@@ -458,19 +462,21 @@
     ]]></description>
   </item>
   <item>
-    <title>Emacs Server</title>
+    <title>emacs server</title>
     <link>https://cdrmack.dev/posts/2023-11-04_emacs_server.html</link>
     <author> (cdrmack)</author>
     <guid isPermaLink="false">https://cdrmack.dev/posts/2023-11-04_emacs_server.html</guid>
     <pubDate>Sat, 04 Nov 2023 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    People often claim that Emacs is slower compared to other editors, particularly when using multiple external packages.
-    Personally, I start Emacs in "server-mode" alongside my graphical environment, allowing me to quickly connect to that server later on.
+    I start Emacs in "server-mode" alongside my graphical environment.
+    Whenever I want to use it, everything is already loaded and ready to go.
+    Thanks to that, from my perspective it opens pretty much instantly.
     </p>
 
     <p>
-    It can be easily done by editing <code>~/.xinitrc</code> file (this file is being used by <code>xinit(1)</code> to start the X Window System server and a first client program).
+    It can be easily set by editing <code>~/.xinitrc</code> file.
+    This file is being used by <code>xinit(1)</code> to start the X Window System server and a first client program.
     </p>
 
     <div class="org-src-container">
@@ -486,21 +492,24 @@
     </p>
 
     <p>
-    With server running in the background, we can connect to it with the <code>emacsclient(1)</code> command:
+    With server running in the background, I can connect to it with the <code>emacsclient(1)</code> command.
     </p>
+
     <div class="org-src-container">
     <pre class="src src-shell">emacsclient -c -a ""
     </pre>
     </div>
 
     <p>
-    To create a new frame, the flag <code>-c</code> is used. This is particularly useful when Emacs is already open but you don't want to reuse the existing frame.
-    The second flag, <code>-a</code>, initiates an alternate editor if the Emacs server is not running. If it's left empty, as in this case, it runs <code>emacs --daemon</code> and attempts to connect to it.
+    To create a new frame, the flag <code>-c</code> is used.
+    This is particularly useful when Emacs is already open but I don't want to reuse the existing frame.
+    The second flag, <code>-a</code>, initiates an alternate editor if the Emacs server is not running.
+    If it is left empty, as in this case, it runs <code>emacs --daemon</code> and attempts to connect to it.
     </p>
 
     <p>
-    To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (in my case, it is <code>/usr/local/bin/</code>).
-    Now, I can launch the Emacs client just like any other program.
+    To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (<code>/usr/local/bin/</code>, to be specific).
+    Now, I can launch Emacs client just like any other program.
     </p>
     ]]></description>
   </item>
