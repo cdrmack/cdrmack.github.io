@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-05-30 Fri 21:29 -->
+<!-- 2025-05-31 Sat 22:47 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs server</title>
 <meta name="author" content="cdrmack" />
-<meta name="keywords" content=":emacs:server:client:" />
+<meta name="keywords" content=":emacs:server:client:daemon:" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 <link rel="icon" type="image/x-icon" href="../images/favicon.png" />
 </head>
 <body>
 <div id="content" class="content">
-<div id="outline-container-org5b5ee7d" class="outline-2">
-<h2 id="org5b5ee7d">emacs server</h2>
-<div class="outline-text-2" id="text-org5b5ee7d">
+<div id="outline-container-org913a79f" class="outline-2">
+<h2 id="org913a79f">emacs server</h2>
+<div class="outline-text-2" id="text-org913a79f">
 <p>
 I start Emacs in "server-mode" alongside my graphical environment.
 Whenever I want to use it, everything is already loaded and ready to go.
@@ -44,7 +44,7 @@ With server running in the background, I can connect to it with the <code>emacsc
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">emacsclient -c -a ""
+<pre class="src src-shell">% emacsclient -c -a ""
 </pre>
 </div>
 
@@ -56,7 +56,7 @@ If it is left empty, as in this case, it runs <code>emacs --daemon</code> and at
 </p>
 
 <p>
-To make my life easier, I have placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (<code>/usr/local/bin/</code>, to be specific).
+To make my life easier, I've placed that line in a file named <code>ec</code>, made it executable, and saved it in a directory within my <code>PATH</code> (<code>/usr/local/bin/</code>, to be specific).
 Now, I can launch Emacs client just like any other program.
 </p>
 </div>

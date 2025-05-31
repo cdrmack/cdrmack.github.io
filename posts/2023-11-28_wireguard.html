@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-05-30 Fri 21:29 -->
+<!-- 2025-05-31 Sat 22:47 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WireGuard</title>
+<title>wireguard</title>
 <meta name="author" content="cdrmack" />
-<meta name="keywords" content=":wireguard:vpn:freebsd:" />
+<meta name="keywords" content=":wireguard:vpn:" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 <link rel="icon" type="image/x-icon" href="../images/favicon.png" />
 </head>
 <body>
 <div id="content" class="content">
-<div id="outline-container-orgfd9df80" class="outline-2">
-<h2 id="orgfd9df80">WireGuard</h2>
-<div class="outline-text-2" id="text-orgfd9df80">
+<div id="outline-container-org4893f95" class="outline-2">
+<h2 id="org4893f95">wireguard</h2>
+<div class="outline-text-2" id="text-org4893f95">
 <p>
-After upgrading my system to FreeBSD 14.0 I have decided to try WireGuard.
-I have never used it before and even after reading <code>wg(8)</code> I didn't really know how to make it work.
-After reading few articles I have found about <code>wg-quick(8)</code> that made the whole setup a bit simpler.
+After upgrading my system to FreeBSD 14.0, I've decided to finally try WireGuard.
+I didn't have to install it manually since it's now part of the FreeBSD kernel.
 </p>
 
 <p>
-WireGuard is now part of the FreeBSD kernel so there is no need to install it manually.
-The only thing I have installed is <code>wireguard-tools</code> to get <code>wg-quick</code>.
+Rather than use <code>wg(8)</code> directly, I've decided to play around with <code>wg-quick(8)</code> (<code>wireguard-tools</code> package).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">pkg install wireguard-tools
+<pre class="src src-shell">% pkg install wireguard-tools
 </pre>
 </div>
 
 <p>
-You need to get a WireGuard INI-like config file from your provider.
-See the example below from the <code>wg(8)</code> man pages.
+WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
 </p>
 
-<pre class="example" id="org934a9df">
+<pre class="example" id="org1027ad1">
 [Interface]
 PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
 ListenPort = 51820
@@ -49,45 +46,39 @@ AllowedIPs = 10.192.122.3/32, 10.192.124.1/24
 </pre>
 
 <p>
-Next we need to generate public and private key for our machine.
-I have created <code>/etc/wireguard/</code> directory and run the following as a root user:
+I've put few config files from my provider inside <code>/usr/local/etc/wireguard/</code>.
+These files can be used to add and set up interfaces.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">umask 077
-wg genkey | tee private.key | wg pubkey &gt; public.key
+<pre class="src src-shell">% wg-quick up /etc/wireguard/sample.conf
 </pre>
 </div>
 
 <p>
-WireGuard protects these files by enforcing that only root should be able read them.
-This is why we run <code>umask</code> first.
+I can skip the full path and just use the config name.
 </p>
 
-<p>
-You can move your config file to <code>/etc/wireguard/</code>.
-This is the default directory that <code>wg-quick</code> uses to find config files.
-</p>
-
-<p>
-You can start WireGuard by providing path to the config file:
-</p>
 <div class="org-src-container">
-<pre class="src src-shell">wg-quick up /etc/wireguard/sample.conf
+<pre class="src src-shell">% wg-quick up sample
 </pre>
 </div>
 
 <p>
-or provide just the config name if it's inside <code>/etc/wireguard/</code>.
+This works because <code>wg-quick</code> looks for configs inside <code>/usr/local/etc/wireguard/</code> directory.
+</p>
+
+<p>
+When I'm done with the given interface I use <code>wg-quick down</code> to tear it down.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">wg-quick up sample
+<pre class="src src-shell">% wg-quick down sample
 </pre>
 </div>
 
 <p>
-You can disable it with <code>wg-quick down sample</code> and see running connections with <code>wg</code>.
+To show current WireGuard configuration and runtime information I simply call <code>wg</code>.
 </p>
 </div>
 </div>
