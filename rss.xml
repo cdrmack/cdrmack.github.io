@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Wed, 04 Jun 2025 18:10:14 +0200</pubDate>
-  <lastBuildDate>Wed, 04 Jun 2025 18:10:14 +0200</lastBuildDate>
+  <pubDate>Wed, 11 Jun 2025 19:57:08 +0200</pubDate>
+  <lastBuildDate>Wed, 11 Jun 2025 19:57:08 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -137,7 +137,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="org7eb3ac9">
+    <description><![CDATA[<pre class="example" id="org3296ea6">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -263,7 +263,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org14ffeb6">
+    <pre class="example" id="org76c342f">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -277,7 +277,8 @@
     <pubDate>Fri, 17 May 2024 00:00:00 +0200</pubDate>
 
     <description><![CDATA[<p>
-    To use <code>ssh(1)</code> we first need to start <code>ssh-agent(1)</code>. We use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and <code>-s</code> for Bourne-shell.
+    To use <code>ssh(1)</code> I first start <code>ssh-agent(1)</code>.
+    I use <code>-c</code> to generate C-shell commands on stdout for csh-style shells and send that to <code>eval</code>.
     </p>
 
     <div class="org-src-container">
@@ -286,22 +287,17 @@
     </div>
 
     <p>
-    With ssh-agent running we need to <code>ssh-add(1)</code> our private key that we want to use.
+    With ssh-agent running I use <code>ssh-add(1)</code> to add private key to it.
     </p>
 
     <div class="org-src-container">
-    <pre class="src src-shell">ssh-add ~/.ssh/&lt;your_private_key&gt;
+    <pre class="src src-shell">ssh-add ~/.ssh/&lt;private_key&gt;
     </pre>
     </div>
 
     <p>
-    That's it, <code>ssh-agent</code> will now hold that private key and use it for public key authentication.
-    You can list all identities currently represented by the agent with the <code>ssh-agent -l</code> command.
-    </p>
-
-    <p>
-    To set this up automatically on login, just add these commands to your shell configuration file.
-    As an example, for <code>tcsh(1)</code> use <code>~/.tcshrc</code>.
+    That's it, <code>ssh-agent</code> will now hold that private key and use it for the public key authentication.
+    If I want to list all identities currently represented by the agent I use <code>ssh-agent -l</code> command.
     </p>
     ]]></description>
   </item>
@@ -337,7 +333,7 @@
     </p>
 
     <p>
-    If I want to go to the link "11" I press <code>SPC</code> and then enter the link ID (11).
+    If I want to go to the link "11" I press <code>SPC</code> and then provide link ID (11).
     </p>
     ]]></description>
   </item>
@@ -354,10 +350,6 @@
 
     <p>
     I've decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
-    </p>
-
-    <p>
-    This is what I've found inside.
     </p>
 
     <div class="org-src-container">
@@ -406,7 +398,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org16ade1c">
+    <pre class="example" id="orgcb625b3">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-05-30 Fri 23:49 -->
+<!-- 2025-06-11 Wed 19:56 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>fonts location</title>
@@ -24,18 +24,14 @@ I've always stored my fonts inside the <code>~/.fonts</code> directory.
 I've decided to move all of them to <code>/usr/local/share/fonts/</code> after reading <code>/usr/local/etc/fonts/fonts.conf</code> file.
 </p>
 
-<p>
-This is what I've found inside.
-</p>
-
 <div class="org-src-container">
 <pre class="src src-shell">&lt;!-- Font directory list --&gt;
 
-          &lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;
+        &lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;
 
-          &lt;dir prefix="xdg"&gt;fonts&lt;/dir&gt;
-          &lt;!-- the following element will be removed in the future --&gt;
-          &lt;dir&gt;~/.fonts&lt;/dir&gt;
+        &lt;dir prefix="xdg"&gt;fonts&lt;/dir&gt;
+        &lt;!-- the following element will be removed in the future --&gt;
+        &lt;dir&gt;~/.fonts&lt;/dir&gt;
 </pre>
 </div>
 
