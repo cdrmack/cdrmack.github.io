@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-06-19 Thu 14:14 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>erase usb stick</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":format:usb:stick:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="outline-container-orgf98711a" class="outline-2">
+<h2 id="orgf98711a">erase usb stick</h2>
+<div class="outline-text-2" id="text-orgf98711a">
+<p>
+First of all I plug in USB stick and run <code>dmesg</code> to find the attached device, for example <code>/dev/da0</code>.
+</p>
+
+<p>
+Then I check current partition information with <code>gpart show /dev/da0</code>.
+</p>
+
+<p>
+I use <code>dd(1)</code> to fill the device with a bunch of zeroes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">% dd if=/dev/zero of=/dev/da0 bs=1M status=progress
+</pre>
+</div>
+
+<p>
+To make that stick usable again it has to have a partitioning scheme and a filesystem.
+</p>
+
+<p>
+Here is an example for GPT with UFS.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">% gpart create -s gpt /dev/da0
+% gpart add -t freebsd-ufs /dev/da0
+% newfs /dev/da0p1
+</pre>
+</div>
+
+<p>
+Ready to be used.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">% mount /dev/da0p1 /media/usb
+# do stuff
+% umount /media/usb
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

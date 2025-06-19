@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Wed, 11 Jun 2025 19:57:08 +0200</pubDate>
-  <lastBuildDate>Wed, 11 Jun 2025 19:57:08 +0200</lastBuildDate>
+  <pubDate>Thu, 19 Jun 2025 14:14:57 +0200</pubDate>
+  <lastBuildDate>Thu, 19 Jun 2025 14:14:57 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,57 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>erase usb stick</title>
+    <link>https://cdrmack.dev/posts/2025-06-19_erase_usb_stick.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-06-19_erase_usb_stick.html</guid>
+    <pubDate>Thu, 19 Jun 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    First of all I plug in USB stick and run <code>dmesg</code> to find the attached device, for example <code>/dev/da0</code>.
+    </p>
+
+    <p>
+    Then I check current partition information with <code>gpart show /dev/da0</code>.
+    </p>
+
+    <p>
+    I use <code>dd(1)</code> to fill the device with a bunch of zeroes.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">% dd if=/dev/zero of=/dev/da0 bs=1M status=progress
+    </pre>
+    </div>
+
+    <p>
+    To make that stick usable again it has to have a partitioning scheme and a filesystem.
+    </p>
+
+    <p>
+    Here is an example for GPT with UFS.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">% gpart create -s gpt /dev/da0
+    % gpart add -t freebsd-ufs /dev/da0
+    % newfs /dev/da0p1
+    </pre>
+    </div>
+
+    <p>
+    Ready to be used.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">% mount /dev/da0p1 /media/usb
+    # do stuff
+    % umount /media/usb
+    </pre>
+    </div>
+    ]]></description>
+  </item>
   <item>
     <title>Debian VM on FreeBSD</title>
     <link>https://cdrmack.dev/posts/2025-02-26_debian_vm_on_freebsd.html</link>
@@ -137,7 +188,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="org3296ea6">
+    <description><![CDATA[<pre class="example" id="orgfa59b08">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -255,7 +306,7 @@
     </p>
 
     <p>
-    Comparing to the root's <code>/etc/crontab</code> we do not need to specify as "who" the command should be run.
+    Comparing to the root's <code>/etc/crontab</code> I don't have to specify as a "who" the command should be run.
     </p>
 
     <div class="org-src-container">
@@ -263,7 +314,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org76c342f">
+    <pre class="example" id="orge7761b2">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -398,7 +449,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="orgcb625b3">
+    <pre class="example" id="org7dac057">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
