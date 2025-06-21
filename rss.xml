@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Thu, 19 Jun 2025 14:14:57 +0200</pubDate>
-  <lastBuildDate>Thu, 19 Jun 2025 14:14:57 +0200</lastBuildDate>
+  <pubDate>Sat, 21 Jun 2025 15:01:52 +0200</pubDate>
+  <lastBuildDate>Sat, 21 Jun 2025 15:01:52 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,32 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>doas</title>
+    <link>https://cdrmack.dev/posts/2025-06-21_doas.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-06-21_doas.html</guid>
+    <pubDate>Sat, 21 Jun 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    I use <code>doas(1)</code> to execute commands as another user (mostly as a root)
+    </p>
+
+    <p>
+    Config file can be pretty minimal.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-conf"># /usr/local/etc/doas.conf
+    permit nopass cdrmack as root
+    </pre>
+    </div>
+
+    <p>
+    After installing <code>doas</code> there should be an example config "<code>doas.conf.sample</code>" available under <code>/usr/local/etc/</code>.
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>erase usb stick</title>
     <link>https://cdrmack.dev/posts/2025-06-19_erase_usb_stick.html</link>
@@ -188,7 +214,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgfa59b08">
+    <description><![CDATA[<pre class="example" id="orgf3c3ffd">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -314,7 +340,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="orge7761b2">
+    <pre class="example" id="org3cb4efe">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -449,7 +475,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org7dac057">
+    <pre class="example" id="orgd37335e">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820

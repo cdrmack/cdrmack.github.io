@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-06-21 Sat 15:01 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>doas</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":doas:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="outline-container-org2c3e122" class="outline-2">
+<h2 id="org2c3e122">doas</h2>
+<div class="outline-text-2" id="text-org2c3e122">
+<p>
+I use <code>doas(1)</code> to execute commands as another user (mostly as a root)
+</p>
+
+<p>
+Config file can be pretty minimal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-conf"># /usr/local/etc/doas.conf
+permit nopass cdrmack as root
+</pre>
+</div>
+
+<p>
+After installing <code>doas</code> there should be an example config "<code>doas.conf.sample</code>" available under <code>/usr/local/etc/</code>.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
