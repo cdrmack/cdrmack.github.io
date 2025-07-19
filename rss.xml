@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sat, 21 Jun 2025 15:01:52 +0200</pubDate>
-  <lastBuildDate>Sat, 21 Jun 2025 15:01:52 +0200</lastBuildDate>
+  <pubDate>Sat, 19 Jul 2025 09:34:34 +0200</pubDate>
+  <lastBuildDate>Sat, 19 Jul 2025 09:34:34 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,69 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>gpg examples</title>
+    <link>https://cdrmack.dev/posts/2025-07-12_gpg_examples.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-07-12_gpg_examples.html</guid>
+    <pubDate>Sat, 12 Jul 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    Install <code>gnupg(1)</code> and generate keys.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg install gnupg
+    gpg --full-generate-key
+    gpg --list-keys
+    </pre>
+    </div>
+
+    <p>
+    Sign and encrypt single file.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">gpg -r gpg.5kky7@passmail.net -e -s foo.txt
+    # gpg --recipient gpg.5kky7@passmail.net --encrypt --sign foo.txt
+    </pre>
+    </div>
+
+    <p>
+    Decrypt file (will also verify as long as there is a signature).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">gpg -o foo.txt -d foo.txt.gpg
+    # gpg --output foo.txt --decrypt foo.txt.gpg
+    </pre>
+    </div>
+
+    <p>
+    The following won't work because gpg first signs then encodes the data.
+    Because of that the signature is hidden.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">gpg --verify foo.txt.gpg
+    </pre>
+    </div>
+
+    <p>
+    I use <code>gpgtar(1)</code> for encoding directories.
+    </p>
+
+    <p>
+    It's also possible to encode (and sign) with symmetric key (password).
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">gpg --symmetric -s --cipher-algo AES256 foo.txt
+    gpg -o foo.txt -d foo.txt.gpg
+    </pre>
+    </div>
+    ]]></description>
+  </item>
   <item>
     <title>doas</title>
     <link>https://cdrmack.dev/posts/2025-06-21_doas.html</link>
@@ -102,23 +165,25 @@
     ]]></description>
   </item>
   <item>
-    <title>Debian VM on FreeBSD</title>
-    <link>https://cdrmack.dev/posts/2025-02-26_debian_vm_on_freebsd.html</link>
+    <title>debian vm with bhyve</title>
+    <link>https://cdrmack.dev/posts/2025-02-26_debian_vm_with_bhyve.html</link>
     <author> (cdrmack)</author>
-    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-02-26_debian_vm_on_freebsd.html</guid>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-02-26_debian_vm_with_bhyve.html</guid>
     <pubDate>Wed, 26 Feb 2025 00:00:00 +0100</pubDate>
 
     <description><![CDATA[<p>
-    <code>bhyve(8)</code> is a hypervisor available on FreeBSD. I personally use <code>vm-bhyve(8)</code> to manage my virtual machines because I find it a bit easier.
+    <code>bhyve(8)</code> is a hypervisor available on FreeBSD.
+    I personally use <code>vm-bhyve(8)</code> to manage my virtual machines because I find it a bit easier.
     </p>
 
     <div class="org-src-container">
     <pre class="src src-shell">pkg install vm-bhyve
+    pkg install bhyve-firmware
     </pre>
     </div>
 
     <p>
-    You need dataset for virtual machines (if ZFS is being used).
+    First of all I need dataset for virtual machines (if ZFS is being used).
     </p>
 
     <div class="org-src-container">
@@ -127,7 +192,7 @@
     </div>
 
     <p>
-    Update system configuration (<code>rc.conf(5)</code>).
+    Then update my system configuration (<code>rc.conf(5)</code>).
     </p>
 
     <div class="org-src-container">
@@ -137,7 +202,8 @@
     </div>
 
     <p>
-    Run <code>vm init</code> to finish initialisation. This will create subdirectories inside the dataset.
+    I run <code>vm init</code> to finish initialisation.
+    This will create subdirectories inside the dataset.
     </p>
 
     <div class="org-src-container">
@@ -146,17 +212,19 @@
     </div>
 
     <p>
-    To enable network for the VMs create virtual switch and attach network interface to it.
+    To enable network for the VMs I create virtual switch and attach my network interface to it.
     </p>
 
     <div class="org-src-container">
-    <pre class="src src-shell">vm switch create public
+    <pre class="src src-shell">iconfig
+    vm switch create public
     vm switch add public re0
+    ifconfig
     </pre>
     </div>
 
     <p>
-    Now you are ready to create Debian's VM. You can use sample config for this to make it easier.
+    Now I'm ready to create Debian's VM. There should be a sample config for this already.
     </p>
 
     <div class="org-src-container">
@@ -166,7 +234,8 @@
 
     <p>
     In my case I want to use debian template (<code>-t</code>) and specify disk image size (<code>-s</code>) to be 40G.
-    The following command will create directory with config, disk image and log. This is a good moment to edit VM's config file and set things like RAM.
+    The following command will create directory with config, disk image and log.
+    This is also a good moment to edit VM's config file and set things like RAM.
     </p>
 
     <div class="org-src-container">
@@ -175,7 +244,8 @@
     </div>
 
     <p>
-    VM is now created but nothing is yet installed on it. Installation image is needed, it can be downloaded with <code>vm iso</code> (it will be placed inside <code>/zroot/bhyve/.iso/</code>).
+    VM is now created but nothing is yet installed on it.
+    I need installation image, it can be downloaded with <code>vm iso</code> (it will be placed inside <code>/zroot/bhyve/.iso/</code>).
     </p>
 
     <div class="org-src-container">
@@ -184,13 +254,18 @@
     </div>
 
     <p>
-    Install Debian on the VM.
+    Now I can install Debian on my new VM.
     </p>
 
     <div class="org-src-container">
     <pre class="src src-shell">vm install -f debian_vm debian-12.9.0-amd64-DVD-1.iso
     </pre>
     </div>
+
+    <p>
+    I don't use <code>-f</code> if I plan to connect via VNC.
+    Otherwise guest will be started in in the foreground on stdio.
+    </p>
 
     <p>
     After the installation VM is ready to be used.
@@ -205,6 +280,16 @@
     <p>
     <code>vm(8)</code> uses <code>cu(1)</code>, to exit console back to the host use <code>~^D or ~.~</code>.
     </p>
+
+    <p>
+    GUI is available via VNC (works only with <code>uefi</code>).
+    There should be sample configs available.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">egrep "^graphics" -R /usr/local/share/examples/vm-bhyve/
+    </pre>
+    </div>
     ]]></description>
   </item>
   <item>
@@ -214,7 +299,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgf3c3ffd">
+    <description><![CDATA[<pre class="example" id="org95e181d">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -340,7 +425,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org3cb4efe">
+    <pre class="example" id="orgd5b66cd">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -475,7 +560,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="orgd37335e">
+    <pre class="example" id="org2b1c6d1">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820

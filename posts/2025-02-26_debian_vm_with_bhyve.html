@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-07-19 Sat 09:34 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>debian vm with bhyve</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":freebsd:bhyve:debian:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="outline-container-org0e441f8" class="outline-2">
+<h2 id="org0e441f8">debian vm with bhyve</h2>
+<div class="outline-text-2" id="text-org0e441f8">
+<p>
+<code>bhyve(8)</code> is a hypervisor available on FreeBSD.
+I personally use <code>vm-bhyve(8)</code> to manage my virtual machines because I find it a bit easier.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pkg install vm-bhyve
+pkg install bhyve-firmware
+</pre>
+</div>
+
+<p>
+First of all I need dataset for virtual machines (if ZFS is being used).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">zfs create zroot/bhyve
+</pre>
+</div>
+
+<p>
+Then update my system configuration (<code>rc.conf(5)</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sysrc vm_enable="YES"
+sysrc vm_dir="zfs:zroot/bhyve"
+</pre>
+</div>
+
+<p>
+I run <code>vm init</code> to finish initialisation.
+This will create subdirectories inside the dataset.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">vm init
+</pre>
+</div>
+
+<p>
+To enable network for the VMs I create virtual switch and attach my network interface to it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">iconfig
+vm switch create public
+vm switch add public re0
+ifconfig
+</pre>
+</div>
+
+<p>
+Now I'm ready to create Debian's VM. There should be a sample config for this already.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">cp /usr/local/share/examples/vm-bhyve/debian.conf /zroot/bhyve/.templates/
+</pre>
+</div>
+
+<p>
+In my case I want to use debian template (<code>-t</code>) and specify disk image size (<code>-s</code>) to be 40G.
+The following command will create directory with config, disk image and log.
+This is also a good moment to edit VM's config file and set things like RAM.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">vm create -t debian -s 40G debian_vm
+</pre>
+</div>
+
+<p>
+VM is now created but nothing is yet installed on it.
+I need installation image, it can be downloaded with <code>vm iso</code> (it will be placed inside <code>/zroot/bhyve/.iso/</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">vm iso https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-12.9.0-amd64-DVD-1.iso
+</pre>
+</div>
+
+<p>
+Now I can install Debian on my new VM.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">vm install -f debian_vm debian-12.9.0-amd64-DVD-1.iso
+</pre>
+</div>
+
+<p>
+I don't use <code>-f</code> if I plan to connect via VNC.
+Otherwise guest will be started in in the foreground on stdio.
+</p>
+
+<p>
+After the installation VM is ready to be used.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">vm start debian_vm
+vm console debian_vm
+</pre>
+</div>
+
+<p>
+<code>vm(8)</code> uses <code>cu(1)</code>, to exit console back to the host use <code>~^D or ~.~</code>.
+</p>
+
+<p>
+GUI is available via VNC (works only with <code>uefi</code>).
+There should be sample configs available.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">egrep "^graphics" -R /usr/local/share/examples/vm-bhyve/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
