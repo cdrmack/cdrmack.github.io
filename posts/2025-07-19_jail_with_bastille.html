@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-07 Thu 22:58 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jail with bastille</title>
+<meta name="author" content="cdrmack" />
+<meta name="keywords" content=":jail:bastille:" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/x-icon" href="../images/favicon.png" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="outline-container-org7af4eda" class="outline-2">
+<h2 id="org7af4eda">jail with bastille</h2>
+<div class="outline-text-2" id="text-org7af4eda">
+<p>
+As as new user I should first run the <code>setup</code> command.
+This should configure the networking, storage and firewall.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">bastille setup
+</pre>
+</div>
+
+<p>
+There should be now <code>bastille0</code> interface visible when running <code>ifconfig</code>.
+</p>
+
+<p>
+Next I will bootstrap FreeBSD release that I will use for my jail.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">bastille bootstrap 14.3-RELEASE
+</pre>
+</div>
+
+<p>
+Bastille can create few different type of jails.
+I will start with the "thin" one since this is the default one.
+I would pick "thick" if I wanted my jail to act like a full, independent FreeBSD install.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">bastille create alcatraz 14.3-RELEASE 192.168.19.63
+</pre>
+</div>
+
+<p>
+Then I double check if jail was created and if it's running.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">bastille list all
+</pre>
+</div>
+
+<p>
+If already running I'm free to launch a login shell inside that jail.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">bastille console alcatraz
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

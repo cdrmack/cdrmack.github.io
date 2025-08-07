@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sat, 19 Jul 2025 09:34:34 +0200</pubDate>
-  <lastBuildDate>Sat, 19 Jul 2025 09:34:34 +0200</lastBuildDate>
+  <pubDate>Thu, 07 Aug 2025 22:58:49 +0200</pubDate>
+  <lastBuildDate>Thu, 07 Aug 2025 22:58:49 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,66 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>jail with bastille</title>
+    <link>https://cdrmack.dev/posts/2025-07-19_jail_with_bastille.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-07-19_jail_with_bastille.html</guid>
+    <pubDate>Sat, 19 Jul 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    As as new user I should first run the <code>setup</code> command.
+    This should configure the networking, storage and firewall.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">bastille setup
+    </pre>
+    </div>
+
+    <p>
+    There should be now <code>bastille0</code> interface visible when running <code>ifconfig</code>.
+    </p>
+
+    <p>
+    Next I will bootstrap FreeBSD release that I will use for my jail.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">bastille bootstrap 14.3-RELEASE
+    </pre>
+    </div>
+
+    <p>
+    Bastille can create few different type of jails.
+    I will start with the "thin" one since this is the default one.
+    I would pick "thick" if I wanted my jail to act like a full, independent FreeBSD install.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">bastille create alcatraz 14.3-RELEASE 192.168.19.63
+    </pre>
+    </div>
+
+    <p>
+    Then I double check if jail was created and if it's running.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">bastille list all
+    </pre>
+    </div>
+
+    <p>
+    If already running I'm free to launch a login shell inside that jail.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">bastille console alcatraz
+    </pre>
+    </div>
+    ]]></description>
+  </item>
   <item>
     <title>gpg examples</title>
     <link>https://cdrmack.dev/posts/2025-07-12_gpg_examples.html</link>
@@ -299,7 +359,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="org95e181d">
+    <description><![CDATA[<pre class="example" id="orgd700414">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -425,7 +485,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="orgd5b66cd">
+    <pre class="example" id="orgd1f23d9">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -560,7 +620,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org2b1c6d1">
+    <pre class="example" id="org1d67fa1">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
