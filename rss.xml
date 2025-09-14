@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Thu, 07 Aug 2025 22:58:49 +0200</pubDate>
-  <lastBuildDate>Thu, 07 Aug 2025 22:58:49 +0200</lastBuildDate>
+  <pubDate>Sun, 14 Sep 2025 13:42:54 +0200</pubDate>
+  <lastBuildDate>Sun, 14 Sep 2025 13:42:54 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,56 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>zfs snapshots</title>
+    <link>https://cdrmack.dev/posts/2025-09-14_zfs_snapshots.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-09-14_zfs_snapshots.html</guid>
+    <pubDate>Sun, 14 Sep 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<div class="org-src-container">
+    <pre class="src src-shell">touch foo.txt
+    zfs snapshot zroot/home/user@create_foo
+    touch bar.txt
+    zfs snapshot zroot/home/user@create_bar
+    </pre>
+    </div>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">zfs list -t snapshot
+    </pre>
+    </div>
+
+    <div class="org-src-container">
+    <pre class="src src-nil">NAME                         USED  AVAIL  REFER  MOUNTPOINT
+    zroot/home/user@create_foo    64K      -   132K  -
+    zroot/home/user@create_bar     0B      -   140K  -
+    </pre>
+    </div>
+
+    <p>
+    Let's say I've removed <code>foo.txt</code> by a mistake.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">rm foo.txt
+    </pre>
+    </div>
+
+    <p>
+    I can now rollback to my latest snapshot to get it back.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">zfs rollback zroot/home/user@create_bar
+    </pre>
+    </div>
+
+    <p>
+    I can't rollback to the <code>user@create_foo</code>, it has to be the latest one.
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>jail with bastille</title>
     <link>https://cdrmack.dev/posts/2025-07-19_jail_with_bastille.html</link>
@@ -359,7 +409,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgd700414">
+    <description><![CDATA[<pre class="example" id="orgc8b630a">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -485,7 +535,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="orgd1f23d9">
+    <pre class="example" id="org1fdc82f">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -620,7 +670,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org1d67fa1">
+    <pre class="example" id="org2174a0d">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
