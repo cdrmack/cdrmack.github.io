@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Sun, 14 Sep 2025 13:42:54 +0200</pubDate>
-  <lastBuildDate>Sun, 14 Sep 2025 13:42:54 +0200</lastBuildDate>
+  <pubDate>Tue, 16 Sep 2025 23:38:47 +0200</pubDate>
+  <lastBuildDate>Tue, 16 Sep 2025 23:38:47 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -24,6 +24,55 @@
     <link>https://cdrmack.dev</link>
   </image>
 
+  <item>
+    <title>linuxulator</title>
+    <link>https://cdrmack.dev/posts/2025-09-16_linuxulator.html</link>
+    <author> (cdrmack)</author>
+    <guid isPermaLink="false">https://cdrmack.dev/posts/2025-09-16_linuxulator.html</guid>
+    <pubDate>Tue, 16 Sep 2025 00:00:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+    service linux start
+    #+end<sub>src</sub>
+    </p>
+
+    <p>
+    Double check if service is running.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">service -e | grep linux
+    </pre>
+    </div>
+
+    <p>
+    Kernel modules and filesystems should be visible under <code>/compat/linux</code>.
+    </p>
+
+    <p>
+    There are some binaries already available in packages, names start with "linux-".
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg search ^linux
+    </pre>
+    </div>
+
+    <p>
+    I decided to check "Discord" which is not available on FreeBSD 14.3-RELEASE.
+    </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">pkg install linux-discord
+    </pre>
+    </div>
+
+    <p>
+    In my case there are over 550MB to be downloaded.
+    This is because GNU/Linux binaries require userland which is downloaded and installed automatically alongside the package.
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>zfs snapshots</title>
     <link>https://cdrmack.dev/posts/2025-09-14_zfs_snapshots.html</link>
@@ -409,7 +458,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="orgc8b630a">
+    <description><![CDATA[<pre class="example" id="org400869d">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -535,7 +584,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="org1fdc82f">
+    <pre class="example" id="orga6975cc">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -670,7 +719,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org2174a0d">
+    <pre class="example" id="org68aa55a">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820
