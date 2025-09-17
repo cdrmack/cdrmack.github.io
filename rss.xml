@@ -14,8 +14,8 @@
   <link>https://cdrmack.dev</link>
   <description><![CDATA[~cdrmack RSS]]></description>
   <language>en</language>
-  <pubDate>Tue, 16 Sep 2025 23:38:47 +0200</pubDate>
-  <lastBuildDate>Tue, 16 Sep 2025 23:38:47 +0200</lastBuildDate>
+  <pubDate>Wed, 17 Sep 2025 12:03:52 +0200</pubDate>
+  <lastBuildDate>Wed, 17 Sep 2025 12:03:52 +0200</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.11</generator>
   <webMaster> (cdrmack)</webMaster>
   <image>
@@ -32,9 +32,14 @@
     <pubDate>Tue, 16 Sep 2025 00:00:00 +0200</pubDate>
 
     <description><![CDATA[<p>
-    service linux start
-    #+end<sub>src</sub>
+    FreeBSD can run some GNU/Linux binaries thanks to the binary compatibility, commonly referred to as Linuxulator, <code>linux(4)</code>.
     </p>
+
+    <div class="org-src-container">
+    <pre class="src src-shell">sysrc linux_enable="YES"
+    service linux start
+    </pre>
+    </div>
 
     <p>
     Double check if service is running.
@@ -458,7 +463,7 @@
     <guid isPermaLink="false">https://cdrmack.dev/posts/2024-10-18_ssh_to_vm.html</guid>
     <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
 
-    <description><![CDATA[<pre class="example" id="org400869d">
+    <description><![CDATA[<pre class="example" id="org0cef1ae">
     Host: FreeBSD
     Guest (VM): NetBSD
     </pre>
@@ -584,7 +589,7 @@
     </pre>
     </div>
 
-    <pre class="example" id="orga6975cc">
+    <pre class="example" id="orgda66329">
     #minute	hour	mday	month	wday	command
     0	*	*	*	*	echo "do stuff every hour"
     </pre>
@@ -719,7 +724,7 @@
     WireGuard supports INI-like config files, see the example below (taken from the <code>wg(8)</code>).
     </p>
 
-    <pre class="example" id="org68aa55a">
+    <pre class="example" id="org4bc0952">
     [Interface]
     PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
     ListenPort = 51820

@@ -9,7 +9,7 @@
     body #content {
 	padding-top: 2em;
 	margin: auto;
-	max-width: 50%;
+	max-width: 90%;
 	background-color: white;
     }
 
@@ -27,7 +27,16 @@
     .bottom {
 	padding-top: 1em;
 	margin: auto;
-	max-width: 50%;
+	max-width: 90%;
 	text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    body #content,
+    .bottom {
+	max-width: 95%;
+	padding-left: 5%;
+	padding-right: 5%;
     }
 }
